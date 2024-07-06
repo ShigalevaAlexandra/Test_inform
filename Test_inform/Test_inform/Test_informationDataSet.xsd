@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Test_informationDataSet" targetNamespace="http://tempuri.org/Test_informationDataSet.xsd" xmlns:mstns="http://tempuri.org/Test_informationDataSet.xsd" xmlns="http://tempuri.org/Test_informationDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Test_informationConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Test_informationConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Test_inform.Properties.Settings.GlobalReference.Default.Test_informationConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="all_resultTableAdapter" GeneratorDataComponentClassName="all_resultTableAdapter" Name="all_result" UserDataComponentName="all_resultTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Test_informationConnectionString (Settings)" DbObjectName="Test_information.dbo.all_result" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT name_, surname_, group_, result_ FROM dbo.all_result</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name_" DataSetColumn="name_" />
+              <Mapping SourceColumn="surname_" DataSetColumn="surname_" />
+              <Mapping SourceColumn="group_" DataSetColumn="group_" />
+              <Mapping SourceColumn="result_" DataSetColumn="result_" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Test_informationDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="Test_informationDataSet" msprop:Generator_DataSetName="Test_informationDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="all_result" msprop:Generator_RowEvHandlerName="all_resultRowChangeEventHandler" msprop:Generator_RowDeletedName="all_resultRowDeleted" msprop:Generator_RowDeletingName="all_resultRowDeleting" msprop:Generator_RowEvArgName="all_resultRowChangeEvent" msprop:Generator_TablePropName="all_result" msprop:Generator_RowChangedName="all_resultRowChanged" msprop:Generator_RowChangingName="all_resultRowChanging" msprop:Generator_TableClassName="all_resultDataTable" msprop:Generator_RowClassName="all_resultRow" msprop:Generator_TableVarName="tableall_result" msprop:Generator_UserTableName="all_result">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name_" msprop:Generator_ColumnPropNameInRow="name_" msprop:Generator_ColumnPropNameInTable="name_Column" msprop:Generator_ColumnVarNameInTable="columnname_" msprop:Generator_UserColumnName="name_">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="surname_" msprop:Generator_ColumnPropNameInRow="surname_" msprop:Generator_ColumnPropNameInTable="surname_Column" msprop:Generator_ColumnVarNameInTable="columnsurname_" msprop:Generator_UserColumnName="surname_">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="group_" msprop:Generator_ColumnPropNameInRow="group_" msprop:Generator_ColumnPropNameInTable="group_Column" msprop:Generator_ColumnVarNameInTable="columngroup_" msprop:Generator_UserColumnName="group_">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="result_" msprop:Generator_ColumnPropNameInRow="result_" msprop:Generator_ColumnPropNameInTable="result_Column" msprop:Generator_ColumnVarNameInTable="columnresult_" msprop:Generator_UserColumnName="result_" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Test_informationModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="first_answers">
+          <Key>
+            <PropertyRef Name="id_first_answer" />
+          </Key>
+          <Property Name="id_first_answer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_answer_text" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="questions">
+          <Key>
+            <PropertyRef Name="id_question" />
+          </Key>
+          <Property Name="id_question" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="question_text" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="first_answer_id" Type="int" Nullable="false" />
+          <Property Name="second_answer_id" Type="int" Nullable="false" />
+          <Property Name="third_answer_id" Type="int" Nullable="false" />
+          <Property Name="right_answer" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="results">
+          <Key>
+            <PropertyRef Name="id_result" />
+          </Key>
+          <Property Name="id_result" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="student_result" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="second_answers">
+          <Key>
+            <PropertyRef Name="id_second_answer" />
+          </Key>
+          <Property Name="id_second_answer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="second_answer_text" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="id_student" />
+          </Key>
+          <Property Name="id_student" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="student_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="student_surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="student_group" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="third_answers">
+          <Key>
+            <PropertyRef Name="id_third_answer" />
+          </Key>
+          <Property Name="id_third_answer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="third_answer_text" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_first_answer">
+          <End Role="first_answers" Type="Self.first_answers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="first_answers">
+              <PropertyRef Name="id_first_answer" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="first_answer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_second_answer">
+          <End Role="second_answers" Type="Self.second_answers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="second_answers">
+              <PropertyRef Name="id_second_answer" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="second_answer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_student">
+          <End Role="students" Type="Self.students" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="results" Type="Self.results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id_student" />
+            </Principal>
+            <Dependent Role="results">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_third_answer">
+          <End Role="third_answers" Type="Self.third_answers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="third_answers">
+              <PropertyRef Name="id_third_answer" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="third_answer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Test_informationModelContainer">
+          <EntitySet Name="first_answers" EntityType="Self.first_answers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="questions" EntityType="Self.questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="results" EntityType="Self.results" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="second_answers" EntityType="Self.second_answers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="third_answers" EntityType="Self.third_answers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_first_answer" Association="Self.fk_first_answer">
+            <End Role="first_answers" EntitySet="first_answers" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_second_answer" Association="Self.fk_second_answer">
+            <End Role="second_answers" EntitySet="second_answers" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_student" Association="Self.fk_student">
+            <End Role="students" EntitySet="students" />
+            <End Role="results" EntitySet="results" />
+          </AssociationSet>
+          <AssociationSet Name="fk_third_answer" Association="Self.fk_third_answer">
+            <End Role="third_answers" EntitySet="third_answers" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Test_informationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="first_answers">
+          <Key>
+            <PropertyRef Name="id_first_answer" />
+          </Key>
+          <Property Name="id_first_answer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_answer_text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="questions" Relationship="Self.fk_first_answer" FromRole="first_answers" ToRole="questions" />
+        </EntityType>
+        <EntityType Name="questions">
+          <Key>
+            <PropertyRef Name="id_question" />
+          </Key>
+          <Property Name="id_question" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question_text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_answer_id" Type="Int32" Nullable="false" />
+          <Property Name="second_answer_id" Type="Int32" Nullable="false" />
+          <Property Name="third_answer_id" Type="Int32" Nullable="false" />
+          <Property Name="right_answer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="first_answers" Relationship="Self.fk_first_answer" FromRole="questions" ToRole="first_answers" />
+          <NavigationProperty Name="second_answers" Relationship="Self.fk_second_answer" FromRole="questions" ToRole="second_answers" />
+          <NavigationProperty Name="third_answers" Relationship="Self.fk_third_answer" FromRole="questions" ToRole="third_answers" />
+        </EntityType>
+        <EntityType Name="results">
+          <Key>
+            <PropertyRef Name="id_result" />
+          </Key>
+          <Property Name="id_result" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="student_result" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="students" Relationship="Self.fk_student" FromRole="results" ToRole="students" />
+        </EntityType>
+        <EntityType Name="second_answers">
+          <Key>
+            <PropertyRef Name="id_second_answer" />
+          </Key>
+          <Property Name="id_second_answer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="second_answer_text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="questions" Relationship="Self.fk_second_answer" FromRole="second_answers" ToRole="questions" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="id_student" />
+          </Key>
+          <Property Name="id_student" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="student_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="student_surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="student_group" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="results" Relationship="Self.fk_student" FromRole="students" ToRole="results" />
+        </EntityType>
+        <EntityType Name="third_answers">
+          <Key>
+            <PropertyRef Name="id_third_answer" />
+          </Key>
+          <Property Name="id_third_answer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="third_answer_text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="questions" Relationship="Self.fk_third_answer" FromRole="third_answers" ToRole="questions" />
+        </EntityType>
+        <Association Name="fk_first_answer">
+          <End Role="first_answers" Type="Self.first_answers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="first_answers">
+              <PropertyRef Name="id_first_answer" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="first_answer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_second_answer">
+          <End Role="second_answers" Type="Self.second_answers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="second_answers">
+              <PropertyRef Name="id_second_answer" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="second_answer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_third_answer">
+          <End Role="third_answers" Type="Self.third_answers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="third_answers">
+              <PropertyRef Name="id_third_answer" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="third_answer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_student">
+          <End Role="students" Type="Self.students" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="results" Type="Self.results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="id_student" />
+            </Principal>
+            <Dependent Role="results">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Test_informationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="first_answers" EntityType="Self.first_answers" />
+          <EntitySet Name="questions" EntityType="Self.questions" />
+          <EntitySet Name="results" EntityType="Self.results" />
+          <EntitySet Name="second_answers" EntityType="Self.second_answers" />
+          <EntitySet Name="students" EntityType="Self.students" />
+          <EntitySet Name="third_answers" EntityType="Self.third_answers" />
+          <AssociationSet Name="fk_first_answer" Association="Self.fk_first_answer">
+            <End Role="first_answers" EntitySet="first_answers" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_second_answer" Association="Self.fk_second_answer">
+            <End Role="second_answers" EntitySet="second_answers" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_third_answer" Association="Self.fk_third_answer">
+            <End Role="third_answers" EntitySet="third_answers" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_student" Association="Self.fk_student">
+            <End Role="students" EntitySet="students" />
+            <End Role="results" EntitySet="results" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Test_informationModelContainer" CdmEntityContainer="Test_informationEntities">
+          <EntitySetMapping Name="first_answers">
+            <EntityTypeMapping TypeName="Test_informationModel.first_answers">
+              <MappingFragment StoreEntitySet="first_answers">
+                <ScalarProperty Name="id_first_answer" ColumnName="id_first_answer" />
+                <ScalarProperty Name="first_answer_text" ColumnName="first_answer_text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questions">
+            <EntityTypeMapping TypeName="Test_informationModel.questions">
+              <MappingFragment StoreEntitySet="questions">
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+                <ScalarProperty Name="question_text" ColumnName="question_text" />
+                <ScalarProperty Name="first_answer_id" ColumnName="first_answer_id" />
+                <ScalarProperty Name="second_answer_id" ColumnName="second_answer_id" />
+                <ScalarProperty Name="third_answer_id" ColumnName="third_answer_id" />
+                <ScalarProperty Name="right_answer" ColumnName="right_answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="results">
+            <EntityTypeMapping TypeName="Test_informationModel.results">
+              <MappingFragment StoreEntitySet="results">
+                <ScalarProperty Name="id_result" ColumnName="id_result" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="student_result" ColumnName="student_result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="second_answers">
+            <EntityTypeMapping TypeName="Test_informationModel.second_answers">
+              <MappingFragment StoreEntitySet="second_answers">
+                <ScalarProperty Name="id_second_answer" ColumnName="id_second_answer" />
+                <ScalarProperty Name="second_answer_text" ColumnName="second_answer_text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="Test_informationModel.students">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="id_student" ColumnName="id_student" />
+                <ScalarProperty Name="student_name" ColumnName="student_name" />
+                <ScalarProperty Name="student_surname" ColumnName="student_surname" />
+                <ScalarProperty Name="student_group" ColumnName="student_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="third_answers">
+            <EntityTypeMapping TypeName="Test_informationModel.third_answers">
+              <MappingFragment StoreEntitySet="third_answers">
+                <ScalarProperty Name="id_third_answer" ColumnName="id_third_answer" />
+                <ScalarProperty Name="third_answer_text" ColumnName="third_answer_text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

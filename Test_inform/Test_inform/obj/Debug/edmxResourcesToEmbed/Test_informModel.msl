@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Test_informationModelContainer" CdmEntityContainer="Test_informationEntities">
+    <EntitySetMapping Name="first_answers">
+      <EntityTypeMapping TypeName="Test_informationModel.first_answers">
+        <MappingFragment StoreEntitySet="first_answers">
+          <ScalarProperty Name="id_first_answer" ColumnName="id_first_answer" />
+          <ScalarProperty Name="first_answer_text" ColumnName="first_answer_text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="questions">
+      <EntityTypeMapping TypeName="Test_informationModel.questions">
+        <MappingFragment StoreEntitySet="questions">
+          <ScalarProperty Name="id_question" ColumnName="id_question" />
+          <ScalarProperty Name="question_text" ColumnName="question_text" />
+          <ScalarProperty Name="first_answer_id" ColumnName="first_answer_id" />
+          <ScalarProperty Name="second_answer_id" ColumnName="second_answer_id" />
+          <ScalarProperty Name="third_answer_id" ColumnName="third_answer_id" />
+          <ScalarProperty Name="right_answer" ColumnName="right_answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="results">
+      <EntityTypeMapping TypeName="Test_informationModel.results">
+        <MappingFragment StoreEntitySet="results">
+          <ScalarProperty Name="id_result" ColumnName="id_result" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="student_result" ColumnName="student_result" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="second_answers">
+      <EntityTypeMapping TypeName="Test_informationModel.second_answers">
+        <MappingFragment StoreEntitySet="second_answers">
+          <ScalarProperty Name="id_second_answer" ColumnName="id_second_answer" />
+          <ScalarProperty Name="second_answer_text" ColumnName="second_answer_text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="Test_informationModel.students">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="id_student" ColumnName="id_student" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="student_surname" ColumnName="student_surname" />
+          <ScalarProperty Name="student_group" ColumnName="student_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="third_answers">
+      <EntityTypeMapping TypeName="Test_informationModel.third_answers">
+        <MappingFragment StoreEntitySet="third_answers">
+          <ScalarProperty Name="id_third_answer" ColumnName="id_third_answer" />
+          <ScalarProperty Name="third_answer_text" ColumnName="third_answer_text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
